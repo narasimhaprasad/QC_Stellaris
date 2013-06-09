@@ -1,0 +1,10 @@
+2013-04-21  prasad  <prasad@prasad-Inspiron-N5010>
+
+	* I2C/L3G4200D/l3g4200d.c (l3g4200d_ReadTemp): Modified ReadTemperature to get correct value. -40 corresponds to 0.
+	(l3g4200d_ReadCalcXYZ): New function to get data in degree/sec
+
+2013-04-20  prasad  <prasad@prasad-Inspiron-N5010>
+
+	* QC_Data.h: Introduced struct for L3G4200D
+	* I2C/L3G4200D/l3g4200d.c: [BUG] : Unable to get temperature correctly. Relative change reflected but unable to get correct data.
+	
