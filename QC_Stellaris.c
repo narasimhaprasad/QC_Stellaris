@@ -10,7 +10,7 @@ int main(void)
 {
 	SysCtlClockSet(SYSCTL_SYSDIV_5|SYSCTL_USE_PLL|SYSCTL_XTAL_16MHZ|SYSCTL_OSC_MAIN);	//Set processor at 40MHz
 	FPUEnable();	//Enable FPU
-	//	QC_GPIO_Init();
+	QC_GPIO_Init();
 	//	i2c_Config();	//Configure I2C0 Master
 	//	bmp085_ReadCoeffs();
 
