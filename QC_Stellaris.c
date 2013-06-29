@@ -11,16 +11,16 @@ int main(void)
 	SysCtlClockSet(SYSCTL_SYSDIV_5|SYSCTL_USE_PLL|SYSCTL_XTAL_16MHZ|SYSCTL_OSC_MAIN);	//Set processor at 40MHz
 	FPUEnable();	//Enable FPU
 	QC_GPIO_Init();
-	//	i2c_Config();	//Configure I2C0 Master
-	//	bmp085_ReadCoeffs();
+	i2c_Config();	//Configure I2C0 Master
+//	bmp085_ReadCoeffs();
 
 
-	//Debug
-	//	hmc5883l_Config();	//Configure compass
+//Debug
+//	hmc5883l_Config();	//Configure compass
 
-	//	temp = l3g4200d_Test();
-	//	l3g4200d_ConfigReg1(ODR100FC25);
-	//	l3g4200d_DataConfig(STREAM_MODE, BIG_ENDIAN, DPS500);
+//	temp = l3g4200d_Test();
+//	l3g4200d_ConfigReg1(ODR100FC25);
+//	l3g4200d_DataConfig(STREAM_MODE, BIG_ENDIAN, DPS500);
 	while(1)
 	{
 		//		bmp085_GetData(&BMP085.Temperature, &BMP085.Pressure);
