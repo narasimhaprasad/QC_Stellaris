@@ -35,7 +35,6 @@ ROM_TimerMatchSet(TIMER0_BASE, TIMER_A, Duty.Cycle3); // Timer 0 Match set
 ROM_TimerMatchSet(TIMER0_BASE, TIMER_B, Duty.Cycle4);
 ROM_TimerEnable(TIMER1_BASE, TIMER_BOTH);
 ROM_TimerEnable(TIMER0_BASE, TIMER_BOTH);
-
 }
 
 

@@ -80,7 +80,7 @@ void l3g4200d_ConfigReg2(uint32_t bhr, uint32_t hpf)
 
 /*
  * @brief: Configure interrupts on L3G4200D
- * @param[in]: Interrupts to enable. A combination of the followwing is possible
+ * @param[in]: Interrupts to enable. A combination of the following is possible
  * 				I1_Int1
  *              I1_BOOT
  *              H_LACTIVE
@@ -123,8 +123,6 @@ void l3g4200d_DataConfig(uint32_t upd, uint32_t end, uint32_t res)
 			DpsRes = 7000;
 	break;
 	}
-
-
 }
 
 /*

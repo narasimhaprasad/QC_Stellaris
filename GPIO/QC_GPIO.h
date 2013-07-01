@@ -10,4 +10,6 @@
 
 #include "QC_Stellaris.h"
 
+extern void QC_GPIO_Init(void);
+
 #endif /* QC_GPIO_H_ */
