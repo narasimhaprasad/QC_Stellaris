@@ -1,3 +1,8 @@
+2013-07-01  prasad  <prasad@dell-laptop>
+
+	* I2C/ADXL345/adxl345.c: Introduction of functions for adxl34c module
+
+
 2013-04-21  prasad  <prasad@prasad-Inspiron-N5010>
 
 	* I2C/L3G4200D/l3g4200d.c (l3g4200d_ReadTemp): Modified ReadTemperature to get correct value. -40 corresponds to 0.

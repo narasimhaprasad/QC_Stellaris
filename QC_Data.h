@@ -35,13 +35,14 @@ typedef struct{
 }L3G4200D_t;
 
 typedef struct{
-	uint32_t Period;
-	uint32_t Pulse;
-	uint32_t data[2];
-}ADS8361_t;
+	int8_t x_offset;	// x offset
+	int8_t y_offset;	// y offset
+	int8_t z_offset;	// z offset
+}ADXL345_t;
 
 Duty_t Duty;
 BMP085_t BMP085;
 HMC5883L_t HMC5883L;
 L3G4200D_t L3G4200D;
+ADXL345_t ADXL345;
 #endif /* QC_DATA_H_ */
