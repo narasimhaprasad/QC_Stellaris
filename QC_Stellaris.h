@@ -24,8 +24,5 @@
 //Own header files
 #include "QC_Data.h"
 
-void ADS8361_DataInt(void);
-
-
 
 #endif /* QC_STELLARIS_H_ */
