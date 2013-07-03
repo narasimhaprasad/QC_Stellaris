@@ -78,6 +78,26 @@
 #define ADXL345_TAPAXES_TAPY_DISABLE				    0x00<<1
 #define ADXL345_TAPAXES_TAPZ_DISABLE				    0x00
 
+#define ADXL345_LowPower								0x00<<4
+#define ADXL345_NormalPower								0x01<<4
+
+#define ADXL345_BW_1600									0x0F
+#define ADXL345_BW_800 									0x0E
+#define ADXL345_BW_400 									0x0D
+#define ADXL345_BW_200 									0x0C
+#define ADXL345_BW_100 									0x0B
+#define ADXL345_BW_50  									0x0A
+#define ADXL345_BW_25  									0x09
+#define ADXL345_BW_12P5									0x08
+#define ADXL345_BW_6P25									0x07
+#define ADXL345_BW_3P13									0x06
+#define ADXL345_BW_1P56									0x05
+#define ADXL345_BW_0P78									0x04
+#define ADXL345_BW_0P39									0x03
+#define ADXL345_BW_0P20									0x02
+#define ADXL345_BW_0P10									0x01
+#define ADXL345_BW_0P05									0x00
+
 #define ADXL345_TAPAXIS_SUP_BIT 						3
 #define ADXL345_TAPAXIS_X_BIT                           2
 #define ADXL345_TAPAXIS_Y_BIT                           1

@@ -34,5 +34,18 @@ extern void adxl345_ReadTapAxes(uint8_t *tap_axes);
 extern void adxl345_WriteTapAxes(uint8_t sup, uint8_t tapx, uint8_t tapy, uint8_t tapz);
 extern void adxl345_ReadActTapStatus(uint8_t *status);
 extern void adxl345_ReadBWRate(uint8_t *bw);
+extern void adxl345_WriteBWRate(uint8_t pwr, uint8_t bw);
+extern void adxl345_ReadPWRCtl(uint8_t *pwrctl);
+extern void adxl345_WritePWRCtl(uint8_t link, uint8_t measure, uint8_t sleep, uint8_t wake);
+extern void adxl345_WriteINTEnable(uint8_t DataRDY, uint8_t singletap, uint8_t doubletap, uint8_t act, uint8_t inact, uint8_t ff, uint8_t watermrk, uint8_t overrun);
+extern void adxl345_ReadINTEnable(uint8_t *inten);
+extern void adxl345_ReadINTSource(uint8_t *intsource);
+extern void adxl345_ReadDataFormat(uint8_t *data);
+extern void adxl345_WriteDataFormat(uint8_t selftest, uint8_t spi, uint8_t intinv, uint8_t fullres, uint8_t justify, uint8_t range);
+extern void adxl345_ReadXYZ(int16_t *xdata, int16_t *ydata, int16_t *zdata);
+extern void adxl345_ReadFIFOCtl(uint8_t *fifo);
+extern void adxl345_WriteFIFOCtl(uint8_t fifo, uint8_t trigger, uint8_t sample);
+extern void adxl345_ReadFIFOStatus(uint8_t *fifost);
 
+}
 #endif /* QC_ADXL345_H_ */

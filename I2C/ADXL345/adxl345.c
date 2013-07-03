@@ -317,6 +317,195 @@ void adxl345_ReadActTapStatus(uint8_t *status){
 	*status = i2c_ReadByte(I2C_ID_ADXL345, ADXL345_RA_ACT_TAP_STATUS);
 }
 
+/*
+ * @brief: Read the BW rate
+ * @param[in]: ptr to variable
+ * @param[out]: none
+ */
 void adxl345_ReadBWRate(uint8_t *bw){
 	*bw = i2c_ReadByte(I2C_ID_ADXL345, ADXL345_RA_BW_RATE);
+}
+
+/*
+ * @brief: Set power mode and bandwidth
+ * @param[in]: Power mode
+ * 				ADXL345_LowPower , ADXL345_NormalPower
+ * 			   BW Rate
+ * 			   	ADXL345_BW_1600
+ * 			   	ADXL345_BW_800
+ * 			   	ADXL345_BW_400
+ * 			   	ADXL345_BW_200
+ * 			   	ADXL345_BW_100
+ * 			   	ADXL345_BW_50
+ * 			   	ADXL345_BW_25
+ * 			   	ADXL345_BW_12P5
+ * 			   	ADXL345_BW_6P25
+ * 			   	ADXL345_BW_3P13
+ * 			   	ADXL345_BW_1P56
+ * 			   	ADXL345_BW_0P78
+ * 			   	ADXL345_BW_0P39
+ * 			   	ADXL345_BW_0P20
+ * 			   	ADXL345_BW_0P10
+ * 			   	ADXL345_BW_0P05
+ * @param[out]: none
+ */
+void adxl345_WriteBWRate(uint8_t pwr, uint8_t bw){
+	i2c_WriteByte(I2C_ID_ADXL345, ADXL345_RA_BW_RATE, pwr|bw);
+}
+
+/*
+ * @brief: Read the power ctl register
+ * @param[in]: ptr to variable
+ * @param[out]: none
+ */
+void adxl345_ReadPWRCtl(uint8_t *pwrctl){
+	*pwrctl = i2c_ReadByte(I2C_ID_ADXL345, ADXL345_RA_POWER_CTL);
+}
+
+/*
+ * @brief: Write to the power ctl register
+ * @param[in]: Link
+ * 				ADXL345_LINK_ENABLE, ADXL345_LINK_DISABLE
+ * 			   Auto Sleep
+ * 			   	ADXL345_ASLEEP_ENABLE, ADXL345_ASLEEP_DISABLE
+ * 			   Measure
+ * 			   	ADXL345_MEASURE_ENABLE, ADXL345_MEASURE_DISABLE
+ * 			   Sleep
+ * 			   	ADXL345_SLEEP_ENABLE, ADXL345_SLEEP_DISABLE
+ * 			   Wakeup
+ * 			   	ADXL345_WAKE_8HZ
+ * 			   	ADXL345_WAKE_4HZ
+ * 			   	ADXL345_WAKE_2HZ
+ * 			   	ADXL345_WAKE_1HZ;
+ * @param[out]: none
+ */
+void adxl345_WritePWRCtl(uint8_t link, uint8_t measure, uint8_t sleep, uint8_t wake){
+	i2c_WriteByte(I2C_ID_ADXL345, ADXL345_RA_POWER_CTL, link|measure|sleep|wake);
+}
+
+/*
+ * @brief: Enable interrupts
+ * @param[in]: Data Ready
+ * 				ADXL345_INT_DATARDY_ENABLE, ADXL345_INT_DATARDY_DISABLE
+ * 			   Single Tap
+ * 			   	ADXL345_INT_SINGLETAP_ENABLE, ADXL345_INT_SINGLETAP_DISABLE
+ * 			   Double Tap
+ * 			   	ADXL345_INT_DOUBLETAP_ENABLE, ADXL345_INT_DOUBLTAP_DISABLE
+ * 			   Activity
+ * 			   	ADXL345_INT_ACTIVITY_ENABLE, ADXL345_INT_ACTIVITY_DISABLE
+ * 			   Inactivity
+ * 			   	ADXL345_INT_INACTIVITY_ENABLE, ADXL345_INT_INACTIVITY_DISABLE
+ * 			   Freefall
+ * 			   	ADXL345_INT_FREEFALL_ENABLE, ADXL345_INT_FREEFALL_DISABLE
+ * 			   Water Mark
+ * 			   	ADXL345_INT_WATERMARK_ENABLE, ADXL345_INT_WATERMARK_DISABLE
+ * 			   Over Run
+ * 			   	ADXL345_INT_OVERRUN_ENABLE, ADXL345_INT_OVERRUN_DISABLE
+ * @param[out]: none
+ */
+void adxl345_WriteINTEnable(uint8_t DataRDY, uint8_t singletap, uint8_t doubletap, uint8_t act, uint8_t inact, uint8_t ff, uint8_t watermrk, uint8_t overrun){
+	i2c_WriteByte(I2C_ID_ADXL345, ADXL345_RA_INT_ENABLE, DataRDY|singletap|doubletap|act|inact|ff|watermrk|overrun);
+}
+
+/*
+ * @brief: Read from the enabled interrupts
+ * @param[in]: ptr to variable
+ * @param[out]: none
+ */
+void adxl345_ReadINTEnable(uint8_t *inten){
+	*inten = i2c_ReadByte(I2C_ID_ADXL345, ADXL345_RA_INT_ENABLE);
+}
+
+/*No functions for INT_MAP register*/
+
+/*
+ * @brief: Read from the int source register
+ * @param[in]: ptr to variable
+ * @param[out]: none
+ */
+void adxl345_ReadINTSource(uint8_t *intsource){
+	*intsource = i2c_ReadByte(I2C_ID_ADXL345, ADXL345_RA_INT_SOURCE);
+}
+
+/*
+ * @brief: Read from the data format register
+ * @param[in]: ptr to variable
+ * @param[out]: none
+ */
+void adxl345_ReadDataFormat(uint8_t *data){
+	*data = i2c_ReadByte(I2C_ID_ADXL345, ADXL345_RA_DATA_FORMAT);
+}
+
+/*
+ * @brief: Write to Data Format register
+ * @param[in]: Self Test
+ * 				ADXL345_DATA_SELFTEST_ENABLE, ADXL345_DATA_SELFTEST_DISABLE
+ * 			   SPI Config
+ * 				ADXL345_DATA_SPI_3, ADXL345_DATA_SPI_4
+ * 			   Int Interrupt
+ * 			   	ADXL345_DATA_INT_INVERT_ENABLE, ADXL345_DATA_INT_INVERT_DISABLE
+ * 			   Full res
+ * 			   	ADXL345_DATA_FULLRES_ENABLE, ADXL345_DATA_FULLRES_DISABLE
+ * 			   Justify
+ * 			   	ADXL345_DATA_JUSTIFY_LEFT, ADXL345_DATA_JUSTIFY_RIGHT
+ * 			   Range
+ * 			   	ADXL345_DATA_RANGE_2G
+ * 			   	ADXL345_DATA_RANGE_4G
+ * 			   	ADXL345_DATA_RANGE_8G
+ * 			   	ADXL345_DATA_RANGE_18G
+ * @param[out]: none
+ */
+void adxl345_WriteDataFormat(uint8_t selftest, uint8_t spi, uint8_t intinv, uint8_t fullres, uint8_t justify, uint8_t range){
+	i2c_WriteByte(I2C_ID_ADXL345, ADXL345_RA_DATA_FORMAT, selftest|spi|intinv|0x00|fullres|justify|range);
+}
+
+/*
+ * @brief: Read XYZ data for adxl345
+ * @param[in]: ptr to x,y,z variables
+ * @param[out]: none
+ */
+void adxl345_ReadXYZ(int16_t *xdata, int16_t *ydata, int16_t *zdata){
+	uint8_t b[6];
+	i2c_ReadBuf(I2C_ID_ADXL345, ADXL345_RA_DATAX0, 6, b);
+	*xdata = (int16_t)((uint16_t)b[0]<<8|(uint16_t)b[1]);
+	*ydata = (int16_t)((uint16_t)b[2]<<8|(uint16_t)b[3]);
+	*zdata = (int16_t)((uint16_t)b[4]<<8|(uint16_t)b[5]);
+}
+
+/*
+ * @brief: Read FIFO ctl register
+ * @param[in]: ptr to variable
+ * @param[out]: none
+ */
+void adxl345_ReadFIFOCtl(uint8_t *fifo){
+	*fifo = i2c_ReadByte(I2C_ID_ADXL345, ADXL345_RA_FIFO_CTL);
+}
+
+/*
+ * @brief: Write to FIFO ctl registers
+ * @param[in]: FIFO
+ * 				ADXL345_FIFO_BYPASS
+ * 				ADXL345_FIFO_FIFO
+ * 				ADXL345_FIFO_STREAM
+ * 				ADXL345_FIFO_TRIGGER
+ * 			  Trigger
+ * 			  	ADXL345_TRIG_INT1, ADXL345_TRIG_INT2
+ * 			  Sample
+ * 			  	ADXL345_SAMPLE_BYPASS
+ * 			  	ADXL345_SAMPLE_FIFO
+ * 			  	ADXL345_SAMPLE_STREAM
+ * 			  	ADXL345_SAMPLE_TRIGGER
+ * 	@param[out]: none
+ */
+void adxl345_WriteFIFOCtl(uint8_t fifo, uint8_t trigger, uint8_t sample){
+	i2c_WriteByte(I2C_ID_ADXL345, ADXL345_RA_FIFO_CTL, fifo|trigger|sample);
+}
+
+/*
+ * @brief: Read FIFO status register
+ * @param[in]: ptr to variable
+ * @param[out]: none
+ */
+void adxl345_ReadFIFOStatus(uint8_t *fifost){
+	*fifost = i2c_ReadByte(I2C_ID_ADXL345, ADXL345_RA_FIFO_STATUS);
 }
