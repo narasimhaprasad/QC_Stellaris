@@ -38,6 +38,9 @@ typedef struct{
 	int8_t x_offset;	// x offset
 	int8_t y_offset;	// y offset
 	int8_t z_offset;	// z offset
+	int16_t x;			// x axis
+	int16_t y;			// y axis
+	int16_t z;			// z axis
 }ADXL345_t;
 
 Duty_t Duty;
