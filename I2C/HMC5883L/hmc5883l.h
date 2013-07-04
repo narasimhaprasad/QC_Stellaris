@@ -65,9 +65,4 @@
 #define HMC5883L_MAX_7				339
 #define HMC5883L_MIN_7				143
 
-
-int16_t xyz[3], Testx, Testy, Testz, Testxyz[3], TestMax, TestMin, xyz_comp_num[3]={1,1,1}, xyz_comp_den[3]={1,1,1};
-uint32_t TestMaxInd, TestMinInd;
-
-
 #endif /* HMC5883L_H_ */
