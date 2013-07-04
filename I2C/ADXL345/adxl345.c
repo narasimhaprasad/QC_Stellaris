@@ -1,4 +1,5 @@
 #include "adxl345.h"
+#include "QC_ADXL345.h"
 
 /*
  * @brief: Test ADXL345 module address
@@ -379,8 +380,10 @@ void adxl345_ReadPWRCtl(uint8_t *pwrctl){
  * 			   	ADXL345_WAKE_1HZ;
  * @param[out]: none
  */
-void adxl345_WritePWRCtl(uint8_t link, uint8_t measure, uint8_t sleep, uint8_t wake){
-	i2c_WriteByte(I2C_ID_ADXL345, ADXL345_RA_POWER_CTL, link|measure|sleep|wake);
+void adxl345_WritePWRCtl(uint8_t link,uint8_t autosleep, uint8_t measure, uint8_t sleep, uint8_t wake){
+	i2c_WriteByte(I2C_ID_ADXL345, ADXL345_RA_POWER_CTL, link|autosleep|measure|sleep|wake);
+//	i2c_WriteByte(I2C_ID_ADXL345, ADXL345_RA_POWER_CTL, 0x00<<5|0x01<<4|0x01<<3|0x01<<2|0x00);
+
 }
 
 /*
@@ -491,10 +494,8 @@ void adxl345_ReadFIFOCtl(uint8_t *fifo){
  * 			  Trigger
  * 			  	ADXL345_TRIG_INT1, ADXL345_TRIG_INT2
  * 			  Sample
- * 			  	ADXL345_SAMPLE_BYPASS
- * 			  	ADXL345_SAMPLE_FIFO
- * 			  	ADXL345_SAMPLE_STREAM
- * 			  	ADXL345_SAMPLE_TRIGGER
+ * 			  	ADXL345_SAMPLE_WATERMARKENABLE
+ * 			  	ADXL345_SAMPLE_WATERMARKDISABLE
  * 	@param[out]: none
  */
 void adxl345_WriteFIFOCtl(uint8_t fifo, uint8_t trigger, uint8_t sample){
